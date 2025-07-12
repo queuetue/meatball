@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "meatball"
+version = "1.0.0"
+description = "A minimal, pluggable macro-expansion preprocessor for YAML."
+authors = [
+    { name = "Scott Russell (Queuetue)", email = "scott@queuetue.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "pyyaml",
+    "sexpdata"
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/queuetue/meatball"
+
+# Ruff configuration for Meatball project
+[tool.ruff]
+# Increase max line length and ignore E501 (line-too-long)
+line-length = 120
+
+[tool.ruff.lint]
+extend-ignore = ["E501"]
+select = ["E", "F", "W", "I"]
+exclude = ["meatball/tests", "meatball/__pycache__"]

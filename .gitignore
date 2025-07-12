@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+*.sqlite3
+*.db
+*.env
+.venv/
+.env/
+*.swp
+*.bak
+*.tmp
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+*.DS_Store
+.vscode/
+.idea/
+.ruff_cache/
