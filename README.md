@@ -4,6 +4,8 @@ A minimal, pluggable tool for expanding macros in YAML files safely and clearly.
 
 Traditional YAML workflows often rely on ad-hoc Jinja, shell replacements, or hidden scripts that make configurations brittle and opaque. Meatball defines a clear, explicit, and safe macro-expansion system that is pluggable and auditable. It helps teams manage complexity by offering sandboxed interpreters, easy plugin registration, and consistent syntax across use cases.
 
+Meatball makes Spaghetti even more delicious.
+
 This makes infrastructure and application configuration both safer and more maintainable.
 
 ---
