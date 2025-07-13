@@ -24,21 +24,21 @@ class MacroPreprocessor:
         self.registry = registry or DEFAULT_REGISTRY
 
     def process_yaml(self, yaml_content: str, context: Optional[Dict[str, Any]] = None) -> Any:
-        """Process YAML content with macro expansion."""
+        """Process YAML content with macro expansion. Supports multi-document YAML."""
         if context is None:
             context = {}
-        # Store original YAML in context for downstream use
         context['_original_yaml'] = yaml_content
-        # Parse YAML first
         try:
-            data = yaml.safe_load(yaml_content)
+            docs = list(yaml.safe_load_all(yaml_content))
         except yaml.YAMLError as e:
             raise ValueError(f"YAML parse error: {e}")
-        # Merge parsed data into context for macro resolution
-        if isinstance(data, dict):
-            context.update(data)
-        # Process the parsed data
-        return self.process_value(data, context)
+        processed_docs = []
+        for data in docs:
+            if isinstance(data, dict):
+                context.update(data)
+            processed_docs.append(self.process_value(data, context))
+        # If only one document, return it directly; else return the list
+        return processed_docs if len(processed_docs) > 1 else processed_docs[0]
 
     def process_value(self, value: Any, context: Dict[str, Any]) -> Any:
         """Process a value, expanding any macros found."""

@@ -9,7 +9,10 @@ from .core.evaluator import (
 )
 from .core.parser import parse_expression
 from .core.plugins import PLUGIN_REGISTRY, get_macro, register_macro
-from .preprocessor import preprocess_yaml_file, preprocess_yaml_string
+from .preprocessor import preprocess_yaml_string, preprocess_yaml_file
+
+# Alias for convenience
+preprocess_yaml = preprocess_yaml_string
 
 __all__ = [
     "preprocess_yaml_file",
